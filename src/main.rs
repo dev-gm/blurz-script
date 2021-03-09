@@ -19,7 +19,8 @@ fn search() -> BluetoothSession {
 }
 
 fn main() {
-    let address = String::from("/org/bluez/hci0/dev_E8_07_BF_F6_6D_0D");
+    let ip = "E8_07_BF_F6_6D_0D";
+    let address = String::from(format!("/org/bluez/hci0/dev_{}", ip));
     let session = search();
     let device = BluetoothDevice::new(&session, address);
     if let Err(err) = device.connect(10000) {
